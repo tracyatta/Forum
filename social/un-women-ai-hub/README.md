@@ -1,6 +1,6 @@
 # MWRAI × UN Women AI Hub: social media pack
 
-Social media designs that bring the **Macarthur Women Redefining AI** brand together with the news that **UN Women has launched its Digital, Innovation and AI Hub** (25 September 2026).
+Social media designs that bring the **Women Redefining AI** (Nuovo Insights, Macarthur) brand together with the news that **UN Women has launched its Digital, Innovation and AI Hub** (25 September 2026).
 
 ## What's in here
 
@@ -15,22 +15,33 @@ Social media designs that bring the **Macarthur Women Redefining AI** brand toge
 
 Posts 1 to 3 work as a **carousel** (swipe post) or as three separate posts across a week.
 
-## Adding your logo (important)
+## The logo
 
-The logo didn't come through with the request, so the designs show a placeholder "MW" circle for now.
+Your **Women Redefining AI** logo (`mwrai-logo.png`) is used exactly as supplied. It has only been trimmed to the circle and resized, and it's never recoloured or stretched.
 
-1. Save your logo as **`mwrai-logo.png`** in this folder (next to `designs.html`). A transparent background works best.
-2. Open `designs.html` in your browser. The logo will show up in all four designs automatically.
-3. To make fresh PNG images, run `node render.js` (or ask Claude to do this for you).
+## How the UN Women alignment works
 
-## Matching your brand colours
+- **Two overlapping circles:** your logo (labelled *Macarthur*) overlaps a UN-blue ring (labelled *UN Women AI Hub*). It says "local meets global" at a glance, and it echoes the double ring in the NUOVO "O".
+- **UN blue** (`#009edb`) is used only for the UN side: the ring, the "AI Hub" words and the stat bars.
+- **"Aligned with" badges** use our own two-ring icon, not the UN Women logo.
+- **A short disclaimer** sits on the posts: *"Women Redefining AI is an independent community initiative, not affiliated with or endorsed by UN Women."*
 
-The colours are set in one place at the top of `designs.html` (look for `BRAND COLOURS`). Change the colour codes there and every design updates. At the moment:
+Why not the actual UN Women logo? The UN name and emblem are protected, and using them needs written permission from the UN. Without it, the logo can make a post look like an official partnership. Naming UN Women in words to share their news is fine. If you ever formally partner with UN Women, the blue ring can easily be swapped for their approved logo.
 
-- **Deep indigo** `#1d1446`: background
-- **Sky blue** `#3fb6e8`: the "global" accent, a nod to UN Women
-- **Warm coral** `#ff7a59`: the "local community" accent, for Macarthur
-- **Soft cream** `#fff6ec`: light panels and text
+## Colours (from your logo)
+
+Set once at the top of `designs.html` under `BRAND COLOURS`:
+
+- **Orange** `#f68b1f` and **coral** `#e8704f`: from the logo ring
+- **Peach** `#f2d0c4` → `#f39576`: from the logo background
+- **Navy** `#1d2a4a`: from the ring and "Redefining AI."
+- **UN blue** `#009edb` (and a deeper `#0072bc` for text on light backgrounds so it's easy to read)
+
+Font: **Work Sans** (a close, free match to your logo lettering), included in `fonts/`.
+
+## Making fresh images
+
+After any change to `designs.html`, run `node render.js` (or ask Claude) to update the PNGs in `exports/`.
 
 ## Captions (ready to copy)
 
@@ -38,7 +49,7 @@ The colours are set in one place at the top of `designs.html` (look for `BRAND C
 > Big news for women in AI 💙
 > UN Women has just launched a Digital, Innovation and AI Hub, a global space dedicated entirely to gender equality in AI and tech.
 > It brings researchers, governments, tech companies and women's rights groups together so AI works for women and girls, not around them.
-> Here in Macarthur, this is exactly the conversation we're having every day. From the world stage to our backyard. 🌏➡️🏡
+> We're proud to stand alongside this work. Here in Macarthur, it's exactly the conversation we're having every day. From the world stage to our backyard. 🌏➡️🏡
 > #MacarthurWomen #WomenInAI #GenderEquality #UNWomen #SmallBusiness #SouthWestSydney
 
 **Post 2: why it matters**
@@ -50,7 +61,7 @@ The colours are set in one place at the top of `designs.html` (look for `BRAND C
 
 **Post 3: local call to action**
 > Global change starts with local conversations ☕
-> At Macarthur Women Redefining AI, we keep it simple:
+> At Women Redefining AI, we keep it simple:
 > ✅ Learn AI in plain English, at your own pace
 > ✅ Meet local women in business doing it too
 > ✅ Have your say in how AI shapes our region
@@ -65,4 +76,4 @@ The colours are set in one place at the top of `designs.html` (look for `BRAND C
   - Used for: the launch date (25 September 2026, New York), what the hub does (it brings together researchers, governments, technology companies and women's rights organisations), and the statistic that men hold nearly eight in 10 AI jobs and almost nine in 10 senior leadership positions shaping the technology.
 - Mirage News (2026). *UN Women Launches AI Hub for Gender Equality*. https://www.miragenews.com/un-women-launches-ai-hub-for-gender-equality-1750479/ (a republished copy of the release)
 
-Note: the designs do **not** use the UN Women logo. It's a protected emblem, and using it could suggest an official partnership. The posts simply share and celebrate the news, with UN Women credited as the source.
+- United Nations. *Use of the UN name and emblem*. https://www.un.org/en/about-us/copyright (explains that the UN name and emblem can't be used without authorisation)

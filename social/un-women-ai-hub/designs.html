@@ -4,177 +4,195 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MWRAI x UN Women AI Hub</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* Work Sans: the closest free match to the lettering in the MWRAI logo (fonts/ folder, open licence) */
+  @font-face { font-family: "Work Sans"; src: url("fonts/worksans-400.woff2") format("woff2"); font-weight: 400; }
+  @font-face { font-family: "Work Sans"; src: url("fonts/worksans-600.woff2") format("woff2"); font-weight: 600; }
+  @font-face { font-family: "Work Sans"; src: url("fonts/worksans-700.woff2") format("woff2"); font-weight: 700; }
+  @font-face { font-family: "Work Sans"; src: url("fonts/worksans-800.woff2") format("woff2"); font-weight: 800; }
+
   /*
-    BRAND COLOURS — change these to match the Macarthur Women logo exactly.
-    Everything in the designs picks up these values.
+    BRAND COLOURS
+    Taken from the Women Redefining AI logo, plus UN blue for the alignment with UN Women.
   */
   :root {
-    --ink: #1d1446;        /* deep indigo: main background */
-    --ink-2: #2d1f66;      /* lighter indigo for depth */
-    --sky: #3fb6e8;        /* UN-style sky blue: the "global" accent */
-    --coral: #ff7a59;      /* warm coral: the "local community" accent */
-    --cream: #fff6ec;      /* soft cream: light panels and text */
-    --muted: #c9c2ea;      /* soft lilac for secondary text */
+    --orange: #f68b1f;     /* logo ring, top */
+    --coral: #e8704f;      /* logo ring, middle */
+    --peach-1: #f2d0c4;    /* logo background, light */
+    --peach-2: #f39576;    /* logo background, deep */
+    --navy: #1d2a4a;       /* logo ring, bottom + "Redefining AI." */
+    --navy-2: #2a3a63;
+    --cream: #fff4ee;
+    --un-blue: #009edb;    /* UN blue: used on dark backgrounds */
+    --un-blue-deep: #0072bc; /* deeper UN blue: used on light backgrounds so text stays readable */
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: #0e0a24; font-family: "Inter", system-ui, sans-serif; color: var(--cream); padding: 40px; }
+  body { background: #e9e4e1; font-family: "Work Sans", system-ui, sans-serif; color: var(--navy); padding: 40px; }
   .sheet { display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start; }
-  .label { font: 600 14px "Inter", sans-serif; color: #9a93c4; margin: 0 0 10px; letter-spacing: .04em; text-transform: uppercase; }
+  .label { font: 600 14px "Work Sans", sans-serif; color: #6b6f80; margin: 0 0 10px; letter-spacing: .04em; text-transform: uppercase; }
 
-  /* ---------- shared frame ---------- */
-  .frame {
-    position: relative; overflow: hidden;
-    background:
-      radial-gradient(circle at 85% 12%, rgba(63,182,232,.35), transparent 42%),
-      radial-gradient(circle at 8% 92%, rgba(255,122,89,.30), transparent 45%),
-      linear-gradient(160deg, var(--ink-2), var(--ink) 60%);
+  /* ---------- frames ---------- */
+  .frame { position: relative; overflow: hidden; }
+  .light { background: linear-gradient(155deg, var(--peach-1) 0%, #f3b39d 55%, var(--peach-2) 100%); color: var(--navy); }
+  .dark  { background: radial-gradient(circle at 90% 8%, rgba(0,158,219,.28), transparent 45%),
+                       radial-gradient(circle at 5% 100%, rgba(232,112,79,.35), transparent 45%),
+                       linear-gradient(160deg, var(--navy-2), var(--navy) 65%); color: var(--cream); }
+  .post  { width: 1080px; height: 1080px; padding: 80px; }
+  .story { width: 1080px; height: 1920px; padding: 140px 90px 150px; }
+
+  /* the logo, kept exactly as supplied */
+  .logo { display: block; border-radius: 50%; }
+
+  /* ---------- the "alignment" motif: our circle meets a UN-blue ring ---------- */
+  .venn { position: absolute; }
+  .venn .logo { position: absolute; z-index: 2; filter: drop-shadow(0 18px 40px rgba(29,42,74,.25)); }
+  .venn .un-ring {
+    position: absolute; z-index: 1; border-radius: 50%;
+    border: 14px solid var(--un-blue);
+    background: radial-gradient(circle, rgba(0,158,219,.10), rgba(0,158,219,.02) 70%);
   }
-  .post  { width: 1080px; height: 1080px; padding: 84px; }
-  .story { width: 1080px; height: 1920px; padding: 150px 96px 180px; }
-
-  /* the "bridge": a local circle linked to a global circle */
-  .orbits { position: absolute; pointer-events: none; }
-  .orbits circle { fill: none; }
-
-  /* ---------- logo lock-up ---------- */
-  .lockup { display: flex; align-items: center; gap: 22px; position: relative; z-index: 2; }
-  .logo-slot {
-    width: 118px; height: 118px; border-radius: 50%;
-    background: var(--cream); display: grid; place-items: center; overflow: hidden;
-    box-shadow: 0 0 0 6px rgba(255,246,236,.12);
+  .venn .un-ring::after { /* thin inner ring, echoing the double ring in the NUOVO "O" */
+    content: ""; position: absolute; inset: 22px; border-radius: 50%; border: 3px solid rgba(0,158,219,.55);
   }
-  .logo-slot img { width: 100%; height: 100%; object-fit: contain; }
-  .logo-fallback { font: 700 30px "Fraunces", serif; color: var(--ink); letter-spacing: -.02em; }
-  .lockup-text { font: 600 22px/1.25 "Inter", sans-serif; color: var(--cream); }
-  .lockup-text span { display: block; font-weight: 400; color: var(--muted); font-size: 19px; }
+  .ring-label {
+    position: absolute; z-index: 3; font: 700 20px "Work Sans", sans-serif; letter-spacing: .16em; text-transform: uppercase;
+    background: var(--cream); color: var(--navy); padding: 10px 18px; border-radius: 999px; white-space: nowrap;
+    box-shadow: 0 6px 18px rgba(29,42,74,.15);
+  }
+  .ring-label.blue { background: var(--un-blue); color: #fff; }
+
+  /* ---------- alignment chip ---------- */
+  .align {
+    display: inline-flex; align-items: center; gap: 16px;
+    background: rgba(255,255,255,.72); border: 2px solid var(--un-blue);
+    padding: 12px 22px 12px 14px; border-radius: 999px; font: 600 22px/1.2 "Work Sans", sans-serif; color: var(--navy);
+  }
+  .dark .align { background: rgba(0,158,219,.14); color: var(--cream); }
+  .align svg { flex: none; }
 
   /* ---------- type ---------- */
-  .kicker {
-    display: inline-block; font: 700 20px "Inter", sans-serif; letter-spacing: .14em; text-transform: uppercase;
-    color: var(--ink); background: var(--sky); padding: 10px 18px; border-radius: 999px;
-  }
-  .kicker.coral { background: var(--coral); }
-  h1, h2 { font-family: "Fraunces", serif; font-weight: 700; letter-spacing: -.02em; line-height: 1.02; }
-  .hl-sky { color: var(--sky); }
-  .hl-coral { color: var(--coral); }
-  p.body { font-size: 32px; line-height: 1.4; color: var(--muted); }
-  .source { font-size: 17px; color: #9a93c4; line-height: 1.4; }
-  .content { position: relative; z-index: 2; }
+  .kicker { font: 700 22px "Work Sans", sans-serif; letter-spacing: .16em; text-transform: uppercase; color: var(--coral); }
+  .dark .kicker { color: var(--orange); }
+  h1, h2 { font-weight: 800; letter-spacing: -.025em; line-height: 1.02; }
+  .soft { font-weight: 400; }
+  .blue { color: var(--un-blue-deep); }
+  .dark .blue { color: var(--un-blue); }
+  .hl { color: var(--coral); }
+  .dark .hl { color: var(--orange); }
+  p.body { font-size: 31px; line-height: 1.42; }
+  .light p.body { color: #2c3657; }
+  .dark p.body { color: #d6dcec; }
+  .content { position: relative; z-index: 4; }
 
-  .footer {
-    position: absolute; left: 84px; right: 84px; bottom: 72px; z-index: 2;
-    display: flex; justify-content: space-between; align-items: flex-end; gap: 24px;
-  }
-  .story .footer { left: 96px; right: 96px; bottom: 110px; }
-  .tag { font: 600 22px "Inter", sans-serif; color: var(--cream); }
-  .tag b { color: var(--coral); }
+  .footer { position: absolute; left: 80px; right: 80px; bottom: 60px; z-index: 4; }
+  .story .footer { left: 90px; right: 90px; bottom: 100px; }
+  .source { font-size: 17px; line-height: 1.45; opacity: .78; }
+  .disclaimer { font-size: 15px; line-height: 1.4; opacity: .7; margin-top: 6px; }
 
   /* stat bars */
-  .bars { display: grid; gap: 34px; margin-top: 56px; }
-  .bar-row .bar-label { font-size: 28px; color: var(--cream); margin-bottom: 14px; display: flex; justify-content: space-between; }
-  .bar-row .bar-label strong { font: 700 34px "Fraunces", serif; color: var(--coral); }
-  .bar { height: 30px; background: rgba(255,246,236,.12); border-radius: 999px; overflow: hidden; }
-  .bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--sky), #7fd2f2); border-radius: 999px; }
-  .bar i.w { background: var(--coral); }
+  .bars { display: grid; gap: 34px; margin-top: 52px; }
+  .bar-label { font-size: 28px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: baseline; }
+  .bar-label strong { font-weight: 800; font-size: 40px; color: var(--orange); }
+  .bar { height: 30px; background: rgba(255,244,238,.14); border-radius: 999px; overflow: hidden; }
+  .bar i { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--un-blue), #5cc6ee); }
 
   /* checklist */
-  .ticks { list-style: none; display: grid; gap: 26px; margin-top: 50px; }
-  .ticks li { display: flex; gap: 22px; align-items: flex-start; font-size: 32px; line-height: 1.35; color: var(--cream); }
+  .ticks { list-style: none; display: grid; gap: 24px; margin-top: 44px; }
+  .ticks li { display: flex; gap: 20px; align-items: flex-start; font-size: 31px; line-height: 1.35; font-weight: 500; }
   .ticks li::before {
-    content: ""; flex: 0 0 38px; height: 38px; border-radius: 50%; margin-top: 2px;
-    background: var(--coral) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%231d1446' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/24px no-repeat;
+    content: ""; flex: 0 0 40px; height: 40px; border-radius: 50%; margin-top: 0;
+    background: var(--navy) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%23f68b1f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/24px no-repeat;
   }
 
-  .cta {
-    display: inline-block; font: 700 30px "Inter", sans-serif; color: var(--ink);
-    background: var(--cream); padding: 24px 40px; border-radius: 999px;
-  }
+  .cta { display: inline-block; font: 700 30px "Work Sans", sans-serif; color: var(--cream); background: var(--navy); padding: 24px 40px; border-radius: 999px; }
+  .dark .cta { background: var(--orange); color: var(--navy); }
 </style>
 </head>
 <body>
+<!--
+  The icon used in the "Aligned with" chip is our own two-ring symbol (Macarthur ring + UN-blue ring).
+  The official UN Women logo and UN emblem are deliberately NOT used: they're protected and imply formal partnership.
+-->
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="rings" viewBox="0 0 64 40">
+    <circle cx="22" cy="20" r="16" fill="none" stroke="#e8704f" stroke-width="5"/>
+    <circle cx="42" cy="20" r="16" fill="none" stroke="#009edb" stroke-width="5"/>
+  </symbol>
+</svg>
+
 <div class="sheet">
 
-  <!-- ===================== POST 1: The news ===================== -->
+  <!-- ===================== POST 1: The news (light) ===================== -->
   <div>
     <p class="label">Post 1 · 1080 × 1080 · The news</p>
-    <section class="frame post" id="post-1">
-      <svg class="orbits" width="1080" height="1080" style="left:0;top:0">
-        <circle cx="880" cy="250" r="260" stroke="rgba(63,182,232,.35)" stroke-width="2"/>
-        <circle cx="880" cy="250" r="170" stroke="rgba(63,182,232,.25)" stroke-width="2"/>
-        <circle cx="160" cy="930" r="200" stroke="rgba(255,122,89,.35)" stroke-width="2"/>
-      </svg>
-      <div class="lockup">
-        <div class="logo-slot"><img src="mwrai-logo.png" alt="Macarthur Women Redefining AI logo" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:'MW'}))"></div>
-        <div class="lockup-text">Macarthur Women<span>Redefining AI</span></div>
+    <section class="frame post light" id="post-1">
+      <div class="venn" style="right:-40px; top:40px; width:560px; height:470px">
+        <div class="un-ring" style="width:400px; height:400px; right:30px; top:0"></div>
+        <img class="logo" src="mwrai-logo.png" alt="Women Redefining AI logo by Nuovo Insights" style="width:360px; height:360px; left:0; top:100px">
+        <span class="ring-label blue" style="right:120px; top:14px">UN Women AI Hub</span>
+        <span class="ring-label" style="left:40px; top:440px">Macarthur</span>
       </div>
-      <div class="content" style="margin-top:110px">
-        <span class="kicker">Global news · 25 Sept 2026</span>
-        <h1 style="font-size:92px; margin-top:34px">UN Women just launched an <span class="hl-sky">AI Hub</span> for gender equality.</h1>
-        <p class="body" style="margin-top:34px; max-width:820px">A new global hub bringing researchers, governments, tech companies and women's groups together to make AI work for women and girls. Here in Macarthur, we're cheering it on.</p>
+      <div class="content" style="margin-top:0">
+        <p class="kicker">Global news · 25 Sept 2026</p>
+      </div>
+      <div class="content" style="position:absolute; left:80px; right:80px; top:540px">
+        <h1 style="font-size:80px">UN Women has launched an <span class="blue">AI&nbsp;Hub</span> for gender equality.</h1>
+        <p class="body" style="margin-top:26px; max-width:880px">A new global hub bringing people together so AI works for women and girls. <strong>We're proud to stand with it, right here in Macarthur.</strong></p>
       </div>
       <div class="footer">
-        <p class="tag">From the world stage <b>to our backyard</b></p>
-        <p class="source">Source: UN Women press release,<br>25 September 2026</p>
+        <p class="source">Source: UN Women press release, 25 September 2026.</p>
+        <p class="disclaimer">Women Redefining AI is an independent community initiative, not affiliated with or endorsed by UN Women.</p>
       </div>
     </section>
   </div>
 
-  <!-- ===================== POST 2: Why it matters (stat) ===================== -->
+  <!-- ===================== POST 2: Why it matters (dark) ===================== -->
   <div>
     <p class="label">Post 2 · 1080 × 1080 · Why it matters</p>
-    <section class="frame post" id="post-2">
-      <div class="lockup">
-        <div class="logo-slot"><img src="mwrai-logo.png" alt="Macarthur Women Redefining AI logo" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:'MW'}))"></div>
-        <div class="lockup-text">Macarthur Women<span>Redefining AI</span></div>
-      </div>
-      <div class="content" style="margin-top:90px">
-        <span class="kicker coral">Why it matters</span>
-        <h2 style="font-size:78px; margin-top:32px">Who's building AI <span class="hl-coral">shapes who it works for.</span></h2>
+    <section class="frame post dark" id="post-2">
+      <img class="logo" src="mwrai-logo.png" alt="Women Redefining AI logo by Nuovo Insights" style="width:190px; height:190px; position:absolute; right:80px; top:70px; z-index:4">
+      <div class="content">
+        <p class="kicker">Why it matters</p>
+        <h2 style="font-size:76px; margin-top:26px; max-width:720px">Who builds AI shapes <span class="hl">who it works for.</span></h2>
         <div class="bars">
-          <div class="bar-row">
+          <div>
             <div class="bar-label">AI jobs held by men <strong>~8 in 10</strong></div>
             <div class="bar"><i style="width:80%"></i></div>
           </div>
-          <div class="bar-row">
+          <div>
             <div class="bar-label">Senior AI leadership roles held by men <strong>~9 in 10</strong></div>
             <div class="bar"><i style="width:90%"></i></div>
           </div>
         </div>
+        <div style="margin-top:50px">
+          <span class="align"><svg width="52" height="32"><use href="#rings"/></svg>That's why we back UN Women's new AI Hub</span>
+        </div>
       </div>
       <div class="footer">
-        <p class="tag">Let's change the numbers, <b>together</b></p>
-        <p class="source">Source: UN Women press release,<br>25 September 2026</p>
+        <p class="source">Source: UN Women press release, 25 September 2026.</p>
+        <p class="disclaimer">Women Redefining AI is an independent community initiative, not affiliated with or endorsed by UN Women.</p>
       </div>
     </section>
   </div>
 
-  <!-- ===================== POST 3: Local call to action ===================== -->
+  <!-- ===================== POST 3: Local call to action (light) ===================== -->
   <div>
     <p class="label">Post 3 · 1080 × 1080 · Local call to action</p>
-    <section class="frame post" id="post-3">
-      <svg class="orbits" width="1080" height="1080" style="left:0;top:0">
-        <circle cx="960" cy="960" r="300" stroke="rgba(255,122,89,.30)" stroke-width="2"/>
-        <circle cx="960" cy="960" r="200" stroke="rgba(63,182,232,.25)" stroke-width="2"/>
-      </svg>
-      <div class="lockup">
-        <div class="logo-slot"><img src="mwrai-logo.png" alt="Macarthur Women Redefining AI logo" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:'MW'}))"></div>
-        <div class="lockup-text">Macarthur Women<span>Redefining AI</span></div>
-      </div>
-      <div class="content" style="margin-top:90px">
-        <span class="kicker coral">What this means locally</span>
-        <h2 style="font-size:80px; margin-top:32px">Big change starts with <span class="hl-coral">women around the table.</span></h2>
+    <section class="frame post light" id="post-3">
+      <img class="logo" src="mwrai-logo.png" alt="Women Redefining AI logo by Nuovo Insights" style="width:190px; height:190px; position:absolute; right:80px; top:70px; z-index:4; filter:drop-shadow(0 12px 28px rgba(29,42,74,.22))">
+      <div class="content" style="margin-top:70px">
+        <p class="kicker">Global goal, local action</p>
+        <h2 style="font-size:78px; margin-top:26px; max-width:720px"><span class="soft">Big change starts</span> with women around the table.</h2>
         <ul class="ticks">
           <li>Learn AI in plain English, at your own pace</li>
           <li>Meet local women in business doing it too</li>
-          <li>Have your say in how AI shapes Macarthur</li>
+          <li>Help shape how AI works for Macarthur</li>
         </ul>
       </div>
-      <div class="footer">
+      <div class="footer" style="display:flex; justify-content:space-between; align-items:center; gap:24px">
         <span class="cta">Join the conversation →</span>
+        <span class="align" style="font-size:19px"><svg width="46" height="28"><use href="#rings"/></svg>Aligned with UN Women's<br>AI Hub goals</span>
       </div>
     </section>
   </div>
@@ -182,26 +200,22 @@
   <!-- ===================== STORY: 1080 x 1920 ===================== -->
   <div>
     <p class="label">Story · 1080 × 1920 · Instagram / Facebook / LinkedIn</p>
-    <section class="frame story" id="story-1">
-      <svg class="orbits" width="1080" height="1920" style="left:0;top:0">
-        <circle cx="820" cy="560" r="330" stroke="rgba(63,182,232,.35)" stroke-width="2"/>
-        <circle cx="820" cy="560" r="220" stroke="rgba(63,182,232,.22)" stroke-width="2"/>
-        <circle cx="220" cy="1500" r="260" stroke="rgba(255,122,89,.35)" stroke-width="2"/>
-        <text x="820" y="572" text-anchor="middle" font-family="Inter" font-weight="700" font-size="30" fill="rgba(63,182,232,.9)" letter-spacing="6">GLOBAL</text>
-        <text x="220" y="1512" text-anchor="middle" font-family="Inter" font-weight="700" font-size="30" fill="rgba(255,122,89,.95)" letter-spacing="6">LOCAL</text>
-      </svg>
-      <div class="lockup">
-        <div class="logo-slot"><img src="mwrai-logo.png" alt="Macarthur Women Redefining AI logo" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:'MW'}))"></div>
-        <div class="lockup-text">Macarthur Women<span>Redefining AI</span></div>
+    <section class="frame story light" id="story-1">
+      <div class="content"><p class="kicker">Big news for women in AI</p></div>
+      <div class="venn" style="left:90px; top:240px; width:900px; height:640px">
+        <div class="un-ring" style="width:560px; height:560px; right:0; top:0"></div>
+        <img class="logo" src="mwrai-logo.png" alt="Women Redefining AI logo by Nuovo Insights" style="width:520px; height:520px; left:0; top:110px">
+        <span class="ring-label blue" style="right:10px; top:24px">UN Women AI Hub</span>
+        <span class="ring-label" style="left:30px; top:610px">Macarthur</span>
       </div>
-      <div class="content" style="margin-top:420px">
-        <span class="kicker">Big news for women in AI</span>
-        <h1 style="font-size:104px; margin-top:40px">UN Women has launched an <span class="hl-sky">AI Hub</span> just for <span class="hl-coral">gender equality.</span></h1>
-        <p class="body" style="margin-top:44px; font-size:36px">Globally, men hold about 8 in 10 AI jobs. In Macarthur, we're helping local women and businesses shape what comes next.</p>
+      <div class="content" style="position:absolute; left:90px; right:90px; top:960px">
+        <h1 style="font-size:92px">UN Women has launched an <span class="blue">AI&nbsp;Hub</span> <span class="soft">for gender equality.</span></h1>
+        <p class="body" style="margin-top:36px; font-size:36px">Globally, men hold about 8 in 10 AI jobs. <strong>We're backing the change, one local conversation at a time.</strong></p>
       </div>
-      <div class="footer" style="flex-direction:column; align-items:flex-start; gap:30px">
+      <div class="footer">
         <span class="cta">Tap the link to join us →</span>
-        <p class="source">Source: UN Women press release, 25 September 2026</p>
+        <p class="source" style="margin-top:30px">Source: UN Women press release, 25 September 2026.</p>
+        <p class="disclaimer">Women Redefining AI is an independent community initiative, not affiliated with or endorsed by UN Women.</p>
       </div>
     </section>
   </div>
