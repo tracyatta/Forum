@@ -1,6 +1,6 @@
-# MWRAI × UN Women AI Hub: social media pack
+# Macarthur Women Redefining AI × UN Women AI Hub: social media pack
 
-Social media designs that bring the **Women Redefining AI** (Nuovo Insights, Macarthur) brand together with the news that **UN Women has launched its Digital, Innovation and AI Hub** (25 September 2026).
+Social media designs that bring the **Macarthur Women Redefining AI** forum together with the news that **UN Women has launched its Digital, Innovation and AI Hub** (25 September 2026).
 
 ## What's in here
 
@@ -15,16 +15,21 @@ Social media designs that bring the **Women Redefining AI** (Nuovo Insights, Mac
 
 Posts 1 to 3 work as a **carousel** (swipe post) or as three separate posts across a week.
 
+## Naming
+
+- **The forum:** always use the full name, **Macarthur Women Redefining AI**, in captions, disclaimers and any text.
+- **The logo:** it says **Women Redefining AI** without "Macarthur" on purpose, so the same brand can be used in other regions later. Keep the logo as it is.
+
 ## The logo
 
-Your **Women Redefining AI** logo (`mwrai-logo.png`) is used exactly as supplied. It has only been trimmed to the circle and resized, and it's never recoloured or stretched.
+The **Women Redefining AI** logo (`mwrai-logo.png`) is used exactly as supplied. It has only been trimmed to the circle and resized, and it's never recoloured or stretched.
 
 ## How the UN Women alignment works
 
 - **Two overlapping circles:** your logo (labelled *Macarthur*) overlaps a UN-blue ring (labelled *UN Women AI Hub*). It says "local meets global" at a glance, and it echoes the double ring in the NUOVO "O".
 - **UN blue** (`#009edb`) is used only for the UN side: the ring, the "AI Hub" words and the stat bars.
 - **"Aligned with" badges** use our own two-ring icon, not the UN Women logo.
-- **A short disclaimer** sits on the posts: *"Women Redefining AI is an independent community initiative, not affiliated with or endorsed by UN Women."*
+- **A short disclaimer** sits on every design: *"Macarthur Women Redefining AI is an independent community initiative, not affiliated with or endorsed by UN Women."*
 
 Why not the actual UN Women logo? The UN name and emblem are protected, and using them needs written permission from the UN. Without it, the logo can make a post look like an official partnership. Naming UN Women in words to share their news is fine. If you ever formally partner with UN Women, the blue ring can easily be swapped for their approved logo.
 
@@ -61,7 +66,7 @@ After any change to `designs.html`, run `node render.js` (or ask Claude) to upda
 
 **Post 3: local call to action**
 > Global change starts with local conversations ☕
-> At Women Redefining AI, we keep it simple:
+> At Macarthur Women Redefining AI, we keep it simple:
 > ✅ Learn AI in plain English, at your own pace
 > ✅ Meet local women in business doing it too
 > ✅ Have your say in how AI shapes our region
