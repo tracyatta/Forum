@@ -8,7 +8,7 @@ const { chromium } = require(process.env.PW_PATH || 'playwright');
   const page = await browser.newPage({ viewport: { width: 2400, height: 2200 } });
   await page.goto('file://' + path.join(__dirname, 'designs.html'));
   await page.evaluate(() => document.fonts.ready);
-  for (const id of ['square', 'linkedin']) {
+  for (const id of ['instagram', 'linkedin']) {
     await page.locator('#' + id).screenshot({ path: path.join(__dirname, 'exports', id + '.png') });
     console.log('Saved exports/' + id + '.png');
   }

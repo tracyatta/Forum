@@ -6,7 +6,7 @@ A co-branded graphic from **Nuovo Insights** and **Macarthur Women Redefining AI
 
 | File | What it is | Size |
 |---|---|---|
-| `exports/square.png` | Square post | 1080 × 1080 (Instagram, Facebook, LinkedIn) |
+| `exports/instagram.png` | Instagram post (also works on Facebook) | 1080 × 1080 |
 | `exports/linkedin.png` | LinkedIn landscape post | 1200 × 627 |
 | `designs.html` | The editable design file (open it in any web browser) | |
 | `render.js` | Turns the designs into the PNG images above (`node render.js`) | |
