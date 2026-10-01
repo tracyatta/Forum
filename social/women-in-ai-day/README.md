@@ -8,6 +8,7 @@ A co-branded graphic from **Nuovo Insights** and **Macarthur Women Redefining AI
 |---|---|---|
 | `exports/instagram.png` | Instagram post (also works on Facebook) | 1080 × 1080 |
 | `exports/linkedin.png` | LinkedIn landscape post | 1200 × 627 |
+| `exports/story.png` | Instagram Story (also works for Facebook Stories) | 1080 × 1920 |
 | `designs.html` | The editable design file (open it in any web browser) | |
 | `render.js` | Turns the designs into the PNG images above (`node render.js`) | |
 
@@ -35,6 +36,9 @@ The logo and fonts are shared with the `../un-women-ai-hub/` pack, so both campa
 > Who's a woman in AI you'd thank today? Tag her below 👇
 > Want to join us? Link in bio.
 > #InternationalWomenInAIDay #WomenInAI #MacarthurWomen #MacarthurBusiness #SouthWestSydney #CamdenBusiness #CampbelltownBusiness #SmallBusinessAustralia #WomenInBusiness #AIForEveryone
+
+**Instagram Story**
+> Add a **link sticker** to your sign-up page and place it over the "Tap the link to join us" button. You can also add a **mention sticker** to tag a woman in AI you'd like to thank.
 
 ## Sources
 
