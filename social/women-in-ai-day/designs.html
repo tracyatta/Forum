@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>International Women in AI Day</title>
+<!--
+  HOW TO USE: open this file in a web browser at 100% zoom. Each design is drawn at its exact
+  upload size. To make fresh PNGs after a change, run: node render.js
+  Logo and fonts are shared with the UN Women AI Hub pack (../un-women-ai-hub/).
+-->
+<style>
+  @font-face { font-family: "Work Sans"; src: url("../un-women-ai-hub/fonts/worksans-400.woff2") format("woff2"); font-weight: 400; }
+  @font-face { font-family: "Work Sans"; src: url("../un-women-ai-hub/fonts/worksans-600.woff2") format("woff2"); font-weight: 600; }
+  @font-face { font-family: "Work Sans"; src: url("../un-women-ai-hub/fonts/worksans-700.woff2") format("woff2"); font-weight: 700; }
+  @font-face { font-family: "Work Sans"; src: url("../un-women-ai-hub/fonts/worksans-800.woff2") format("woff2"); font-weight: 800; }
+
+  /* BRAND COLOURS: taken from the Women Redefining AI logo (same as the UN Women AI Hub pack) */
+  :root {
+    --orange: #f68b1f;
+    --coral: #e8704f;
+    --peach-1: #f2d0c4;
+    --peach-2: #f39576;
+    --navy: #1d2a4a;
+    --navy-2: #2a3a63;
+    --cream: #fff4ee;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #e9e4e1; font-family: "Work Sans", system-ui, sans-serif; color: var(--navy); padding: 40px; }
+  .sheet { display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start; }
+  .label { font: 600 14px "Work Sans", sans-serif; color: #6b6f80; margin: 0 0 10px; letter-spacing: .04em; text-transform: uppercase; }
+
+  .frame { position: relative; overflow: hidden; color: var(--cream);
+    background: radial-gradient(circle at 85% 30%, rgba(246,139,31,.30), transparent 42%),
+                radial-gradient(circle at 0% 100%, rgba(232,112,79,.35), transparent 45%),
+                linear-gradient(160deg, var(--navy-2), var(--navy) 65%); }
+  .post { width: 1080px; height: 1080px; }
+  .wide { width: 1200px; height: 627px; }
+  .topbar { position: absolute; top: 0; left: 0; right: 0; height: 10px; z-index: 5;
+    background: linear-gradient(90deg, var(--orange), var(--coral) 55%, var(--peach-2)); }
+
+  /* the logo, kept exactly as supplied, inside celebratory rings */
+  .halo { position: absolute; border-radius: 50%; }
+  .halo .ring { position: absolute; border-radius: 50%; inset: 0; }
+  .halo .r1 { inset: -34px; border: 4px solid rgba(246,139,31,.75); }
+  .halo .r2 { inset: -78px; border: 3px solid rgba(232,112,79,.45); }
+  .halo .r3 { inset: -126px; border: 2px dashed rgba(243,149,118,.32); }
+  .halo img { position: relative; width: 100%; height: 100%; border-radius: 50%; display: block;
+    filter: drop-shadow(0 24px 50px rgba(0,0,0,.35)); }
+  .spark { position: absolute; border-radius: 50%; background: var(--orange); }
+
+  .date-badge { position: absolute; z-index: 4; background: var(--coral); color: #fff; border-radius: 50%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+    box-shadow: 0 12px 30px rgba(0,0,0,.3); border: 5px solid var(--cream); }
+  .date-badge b { font-weight: 800; line-height: .9; }
+  .date-badge span { font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+
+  .content { position: absolute; z-index: 4; }
+  .kicker { font: 700 24px "Work Sans", sans-serif; letter-spacing: .16em; text-transform: uppercase; color: var(--orange); }
+  h1 { font-weight: 800; letter-spacing: -.025em; line-height: 1.02; }
+  .soft { font-weight: 400; }
+  .hl { color: var(--orange); }
+  p.body { font-size: 32px; line-height: 1.4; color: #d6dcec; }
+  p.body strong { color: var(--cream); }
+  .chips { display: flex; gap: 14px; flex-wrap: wrap; }
+  .chip { font: 700 24px "Work Sans", sans-serif; padding: 12px 24px; border-radius: 999px;
+    background: rgba(255,244,238,.10); border: 2px solid rgba(246,139,31,.7); color: var(--cream); }
+  .cta { display: inline-block; background: var(--coral); color: #fff; font: 700 28px "Work Sans", sans-serif;
+    padding: 18px 32px; border-radius: 999px; }
+  .footer { position: absolute; z-index: 4; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; }
+  .partners { font: 700 21px "Work Sans", sans-serif; letter-spacing: .06em; color: var(--cream); }
+  .partners em { font-style: normal; color: var(--orange); padding: 0 8px; }
+  .source { font-size: 16px; line-height: 1.4; color: rgba(255,244,238,.65); text-align: right; }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <!-- ===================== SQUARE POST: 1080 x 1080 (Instagram, Facebook, LinkedIn) ===================== -->
+  <div>
+    <p class="label">Square post · 1080 × 1080 · Instagram / Facebook / LinkedIn</p>
+    <section class="frame post" id="square">
+      <div class="topbar"></div>
+
+      <div class="halo" style="width:390px; height:390px; right:110px; top:150px">
+        <div class="ring r3"></div><div class="ring r2"></div><div class="ring r1"></div>
+        <img src="../un-women-ai-hub/mwrai-logo.png" alt="Women Redefining AI logo by Nuovo Insights">
+      </div>
+      <i class="spark" style="width:22px;height:22px; right:520px; top:120px"></i>
+      <i class="spark" style="width:14px;height:14px; right:60px; top:560px; background:var(--peach-2)"></i>
+      <i class="spark" style="width:12px;height:12px; right:470px; top:600px; background:var(--coral)"></i>
+
+      <div class="date-badge" style="width:170px; height:170px; right:450px; top:410px">
+        <b style="font-size:76px">1</b><span style="font-size:22px">October</span>
+      </div>
+
+      <div class="content" style="left:80px; top:90px; width:440px">
+        <p class="kicker">International<br>Women in AI Day</p>
+      </div>
+
+      <div class="content" style="left:80px; right:80px; top:660px">
+        <h1 style="font-size:82px">Here's to the women <span class="hl">redefining&nbsp;AI.</span></h1>
+        <p class="body" style="margin-top:22px; max-width:900px">Learning it, leading it and shaping it for our community. <strong>Who's a woman in AI you'd thank today?</strong></p>
+      </div>
+
+      <div class="footer" style="left:80px; right:80px; bottom:48px">
+        <p class="partners">NUOVO INSIGHTS<em>×</em>MACARTHUR WOMEN REDEFINING AI</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===================== LINKEDIN: 1200 x 627 ===================== -->
+  <div>
+    <p class="label">LinkedIn · 1200 × 627</p>
+    <section class="frame wide" id="linkedin">
+      <div class="topbar"></div>
+
+      <div class="content" style="left:64px; top:60px; width:690px">
+        <p class="kicker" style="font-size:22px">International Women in AI Day · 1 October</p>
+        <h1 style="font-size:66px; margin-top:20px">Here's to the women <span class="hl">redefining&nbsp;AI.</span></h1>
+        <p class="body" style="font-size:26px; margin-top:18px">Men still hold nearly 8 in 10 AI jobs. Every woman who gets curious about AI helps change that.</p>
+        <div class="chips" style="margin-top:26px">
+          <span class="chip" style="font-size:22px">Learning</span>
+          <span class="chip" style="font-size:22px">Leading</span>
+          <span class="chip" style="font-size:22px">Shaping</span>
+        </div>
+      </div>
+
+      <div class="halo" style="width:300px; height:300px; right:96px; top:120px">
+        <div class="ring r3"></div><div class="ring r2"></div><div class="ring r1"></div>
+        <img src="../un-women-ai-hub/mwrai-logo.png" alt="Women Redefining AI logo by Nuovo Insights">
+      </div>
+      <div class="date-badge" style="width:130px; height:130px; right:350px; top:350px">
+        <b style="font-size:58px">1</b><span style="font-size:17px">October</span>
+      </div>
+      <i class="spark" style="width:18px;height:18px; right:70px; top:90px"></i>
+      <i class="spark" style="width:12px;height:12px; right:40px; top:470px; background:var(--peach-2)"></i>
+
+      <div class="footer" style="left:64px; right:64px; bottom:34px">
+        <p class="partners" style="font-size:18px">NUOVO INSIGHTS<em>×</em>MACARTHUR WOMEN REDEFINING AI</p>
+        <p class="source">Source: UN Women, 25 Sept 2026</p>
+      </div>
+    </section>
+  </div>
+
+</div>
+</body>
+</html>
